@@ -22,8 +22,8 @@ table_html = soup.findAll('table', {'class': 't-chart'})
 df = pd.read_html(str(table_html))[0]
 
 #2) Create Figure
-fig = go.Figure(data=[go.Surface(z=df)])
-
+fig = go.Figure(data=[go.Surface(z=df, y=df['Date'], x=df.columns[1:])])
+fig.show()
 #3) Figure layout
 fig.update_layout(title='Bond Yields, 2021', autosize=False,
                   width=500, height=500,
